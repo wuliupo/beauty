@@ -1,7 +1,7 @@
 <template>
-    <div v-if="loading" class='wrapper'>
-        <div class='cell'>
-            <PulseLoader color="rgba(255, 56, 96, 0.58)"/>            
+    <div v-if="loading" class="wrapper">
+        <div class="cell">
+            <PulseLoader color="rgba(255, 56, 96, 0.58)"/>
         </div>
     </div>
 </template>

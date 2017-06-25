@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div v-if="!loading" class ='wrap_posts'>  
+        <div v-if="!loading" class ="wrap_posts">
             <nav class="level">
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="title">{{post.title}}</p>
-                        <p class='desc'>
-                            <router-link :to="'/location/'+doubleBase64(formatLocation(post.location))" >
+                        <p class="desc">
+                            <router-link :to="'/location/'+doubleBase64(formatLocation(post.location))">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 {{ post.location | formatLocation}}
                             </router-link>
@@ -14,26 +14,26 @@
                             <i class="fa fa-user" aria-hidden="true"></i>
                             @{{ post.authorname}} ;
                             </router-link>
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>  
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
                             {{ new Date(post.date)| formatDateTime}}
                         </p>
                     </div>
                 </div>
             </nav>
             <hr>
-            <div class='content has-text-centered'>
+            <div class="content has-text-centered">
                 <p>
                     {{post.content}}
                 </p>
 
-                <img v-for="url in post.images" :src="url | http2https" />
+                <img v-for="url in post.images" :src="url | http2https">
                 <hr>
-                <div class='wrap_disqus'>
-                    <div  id="disqus_thread"></div>
+                <div class="wrap_disqus">
+                    <div id="disqus_thread"></div>
                 </div>
-            </div>        
+            </div>
         </div>
-    </div>    
+    </div>
 </template>
 
 <script>
@@ -89,7 +89,7 @@ export default {
     .fa {
     color: $gray;
     vertical-align: text-bottom;
-    } 
+    }
 }
 .wrap_disqus {
     width:80%;

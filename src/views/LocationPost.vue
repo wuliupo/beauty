@@ -1,24 +1,24 @@
 <template>
-<div >
-  <div class='wrap_page'>
-      <div class='wrap_inner'>
-          <pagination :urlPrefix="'/location/' + currentLocation" :currentPage='currentPage' :lastPage='Math.ceil(location.keys.length/location.pageSize)'/> 
-      </div>        
+<div>
+  <div class="wrap_page">
+      <div class="wrap_inner">
+          <pagination :urlPrefix="'/location/' + currentLocation" :currentPage="currentPage" :lastPage="Math.ceil(location.keys.length/location.pageSize)"></pagination>
+      </div>
   </div>
-  <div class='wrap_posts' v-if="!loading" >        
+  <div class="wrap_posts" v-if="!loading">
     <nav class="level">
         <div class="level-item has-text-centered">
             <div>
                 <p class="title">
-                    <i class="fa fa-map-marker" aria-hidden="true"/>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
                     {{ location.items[0].location | formatLocation}}
                 </p>
-            </div>                
-        </div>        
+            </div>
+        </div>
     </nav>
-    <hr/>   
-    <div class='content has-text-centered'>
-      <CardList :items="location.items" :loading='loading' :enterActiveClass='enterActiveClass' /> 
+    <hr>
+    <div class="content has-text-centered">
+      <CardList :items="location.items" :loading="loading" :enterActiveClass="enterActiveClass"></CardList>
     </div>
   </div>
 </div>

@@ -4,8 +4,8 @@
             <div class="card" v-for="(item,index) in items">
                 <div class="card-image">
                     <router-link :to="'/post/'+item.key">
-                        <figure class="image ">
-                        <img  :src="item.imageUrl | http2https" alt="Image">
+                        <figure class="image">
+                            <img :src="item.imageUrl | http2https" alt="Image">
                         </figure>
                     </router-link>
                 </div>
@@ -19,9 +19,8 @@
                             </router-link>
                         </div>
                         <div class="media-content">
-                            <p class="title is-5"> {{item.title}}  </p>
-                            <p class="subtitle is-6">
-                            </p>
+                            <p class="title is-5"> {{item.title}} </p>
+                            <p class="subtitle is-6"></p>
                         </div>
                     </div>
                     <div class="content">

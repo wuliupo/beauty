@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-    <header class = "header">
+    <header class="header">
       <nav class="nav has-shadow">
         <div class="container">
           <div class="nav-left">
-            <router-link  class="nav-item" to="/all">              
-               <img class='logo' src="https://olxvlcccu.qnssl.com/blog/rrnhu.png?imageslim" alt="Beauty logo" />
-            </router-link>                        
+            <router-link class="nav-item" to="/all">
+               <img class="logo" src="https://olxvlcccu.qnssl.com/blog/rrnhu.png?imageslim" alt="Beauty logo">
+            </router-link>
           </div>
             <div class="nav-center wrap_nav">
-              <router-link v-for = "menu,index in menusValues" :key="index" class="nav-item is-tab is-hidden-mobile" :to="'/'+menu">{{menu}}</router-link>
+              <template v-for="(menu, index) in menusValues">
+                <router-link class="nav-item is-tab is-hidden-mobile" :to="'/'+menu">{{menu}}</router-link>
+              </template>
             </div>
           <span class="nav-toggle" v-on:click="toggle">
             <span></span>
@@ -17,28 +19,24 @@
             <span></span>
           </span>
           <div class="nav-right nav-menu wrap_nav" v-on:click="toggle">
-            <router-link v-for = "menu,index in menusValues" :key="index" class="nav-item is-tab is-hidden-tablet" :to="'/'+menu">{{menu}}</router-link>
+            <template v-for="(menu, index) in menusValues">
+              <router-link class="nav-item is-tab is-hidden-tablet" :to="'/'+menu">{{menu}}</router-link>
+            </template>
           </div>
         </div>
       </nav>
-    </header>  
+    </header>
     <div class="view container">
-      <transition 
-        mode="out-in"
-        enter-active-class="fadeIn"
-        leave-active-class="fadeOut"
-        appear
-        appear-active-class=null
-        > 
-          <router-view class="animated"></router-view>      
+      <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear appear-active-class=null>
+          <router-view class="animated"></router-view>
       </transition>
     </div>
     <footer class="footer">
       <div class="container">
         <div class="content has-text-centered">
           <p>
-            <strong>Beauty </strong> by <a href="http://github.com/netpi">Netpi Chen</a>.  
-            source code is <a href="https://github.com/beauty-enjoy/beauty">beauty</a>. 
+            <strong>Beauty </strong> by <a href="http://github.com/netpi">Netpi Chen</a>.
+            source code is <a href="https://github.com/beauty-enjoy/beauty">beauty</a>.
             beauty data from <a href="https://github.com/beauty-enjoy/dbmeinv-firebase-api">dbmeinv-firebase-api</a>.
           </p>
           <p>
@@ -80,7 +78,7 @@ export default {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 @import '~animate.css';
 .animated {
   animation-duration: .377s;
@@ -104,8 +102,8 @@ body {
     margin-top: 0.5rem
   }
   &:hover {
-    color: #fff !important;  
-  }            
+    color: #fff !important;
+  }
 }
 .nav-toggle  {
   &:hover {

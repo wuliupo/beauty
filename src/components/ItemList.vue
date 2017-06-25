@@ -1,14 +1,14 @@
 <template>
-  <div >
-    <div class='wrap_page'>
-        <div class='wrap_inner'>
-            <pagination prev="后退" next="前进"  modifiers='' :urlPrefix="'/'+cidtype" :currentPage=currentPage :lastPage='Math.ceil( keys.length / pageSize)'/>
+  <div>
+    <div class="wrap_page">
+      <div class="wrap_inner">
+        <pagination prev="后退" next="前进" modifiers="is-centered" :urlPrefix="'/'+cidtype" :currentPage="currentPage" :lastPage="Math.ceil( keys.length / pageSize)"></pagination>
         </div>
     </div>
-    <div class='wrap_items wrap_posts' v-if="!loading"> 
-      <CardList :items="items" :loading='loading' :enterActiveClass='enterActiveClass' /> 
-    </div>        
-  </div>  
+    <div class="wrap_items wrap_posts" v-if="!loading">
+      <CardList :items="items" :loading="loading" :enterActiveClass="enterActiveClass"></CardList>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -69,7 +69,7 @@ export default {
 @import '../scss/variable.scss';
 .section1 {
     background-color: $gray;
-    box-shadow: 0 1px 2px $gray;    
+    box-shadow: 0 1px 2px $gray;
  }
 .wrap_page {
     padding: 15px 30px;
@@ -85,11 +85,11 @@ export default {
         max-width: 800px;
         margin: 0 auto;
     }
-}    
+}
 .wrap_items {
     margin: 50px 0;
     width: 100%;
-    border-radius: 2px;    
+    border-radius: 2px;
     // overflow: hidden;
 }
 .wrapper {
