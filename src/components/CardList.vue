@@ -1,49 +1,40 @@
-<template  >
-    <div class="wrap_card"> 
-        <transition 
-            mode="out-in"
-            :enter-active-class="enterActiveClass"
-            appear> 
-            <div class='animated' v-if="!loading"> 
-                <div v-for=" (v,i) in new Array(Math.ceil(items.length/3))" class="columns">
-                    <div  v-for="(item,index) in items.slice(i*3,(i+1) * 3)" class="column is-one-third wrap_card_column " >
-                        <div   class="card">
-                            <div class="card-image">
-                                <router-link  :to="'/post/'+item.key">
-                                    <figure class="image " >
-                                    <img  :src="item.imageUrl | http2https" alt="Image">
-                                    </figure>
-                                </router-link>
-                            </div>
-                            <div class="card-content">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <router-link class="authorname" :to="'/author/'+doubleBase64(item.authorname)" >
-                                            <figure class="image is-48x48" >
-                                            <img :src="item.avatar | http2https" alt="Image">
-                                            </figure>
-                                        </router-link> 
-                                    </div>
-                                    <div class="media-content">
-                                        <p class="title is-5"> {{item.title}}  </p>
-                                        <p class="subtitle is-6">
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <router-link class="authorname" :to="'/author/'+doubleBase64(item.authorname)" >
-                                    @{{item.authorname}}
-                                    </router-link> 
-                                    <br>  
-                                    <small>{{new Date(item.date) | formatDateTime}}</small>
-                                </div>
-                            </div>
+<template>
+    <transition mode="out-in" :enter-active-class="enterActiveClass" appear>
+        <div class="animated card-container" v-if="!loading">
+            <div class="card" v-for="(item,index) in items">
+                <div class="card-image">
+                    <router-link :to="'/post/'+item.key">
+                        <figure class="image ">
+                        <img  :src="item.imageUrl | http2https" alt="Image">
+                        </figure>
+                    </router-link>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <router-link class="authorname" :to="'/author/'+doubleBase64(item.authorname)">
+                                <figure class="image is-48x48">
+                                <img :src="item.avatar | http2https" alt="Image">
+                                </figure>
+                            </router-link>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-5"> {{item.title}}  </p>
+                            <p class="subtitle is-6">
+                            </p>
                         </div>
                     </div>
+                    <div class="content">
+                        <router-link class="authorname" :to="'/author/'+doubleBase64(item.authorname)">
+                        @{{item.authorname}}
+                        </router-link>
+                        <br>
+                        <small>{{new Date(item.date) | formatDateTime}}</small>
+                    </div>
                 </div>
-            </div>   
-        </transition>      
-    </div>
+            </div>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -60,23 +51,29 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-@import '../scss/variable.scss';\
-.wrap_card {
-    padding-top: 1.2rem;
-    padding-bottom: 0.1em;
-    padding-right: 0.1em;
-    padding-left: 0.1em;
-    overflow: hidden;
-    width: 100%
-}
-.wrap_card_column {
-    padding: 10px 10px 10px 10px;
-    
-    .card {
-        width:100%;
-        height:100%;
-        
-    }
+<style lang="scss">
+@import '../scss/variable.scss';
+.card-container {
+  -webkit-column-count: 3;
+  -webkit-column-gap: 15px;
+  -webkit-column-rule: 5px solid #FFF;
+  -webkit-column-width: 240px;
+
+  -moz-column-count: 3;
+  -moz-column-gap: 15px;
+  -moz-column-rule: 5px solid #FFF;
+  -moz-column-width: 240px;
+
+  column-count: 3;
+  column-gap: 15px;
+  column-rule: 5px solid #FFF;
+  column-width: 240px;
+
+  .card {
+    margin-bottom: 15px;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
 }
 </style>
